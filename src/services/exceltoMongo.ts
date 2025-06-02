@@ -41,7 +41,7 @@ function cleanString(value: any): string {
 
 function findImageForSku(sku: string): string {
   const uploadsDir = path.resolve(__dirname, "../../uploads");
-  if (!fs.existsSync(uploadsDir)) return `http://localhost:5000/uploads/${sku.toLowerCase()}.jpg`;
+  if (!fs.existsSync(uploadsDir)) return `https://catalogue-imp360-server.onrender.com/uploads/${sku.toLowerCase()}.jpg`;
 
   const files = fs.readdirSync(uploadsDir);
   const skuLower = sku.toLowerCase();
@@ -53,10 +53,10 @@ function findImageForSku(sku: string): string {
 
   if (matchingFile) {
     const extension = path.extname(matchingFile);
-    return `http://localhost:5000/uploads/${skuLower}${extension}`;
+    return `https://catalogue-imp360-server.onrender.com/uploads/${skuLower}${extension}`;
   }
 
-  return `http://localhost:5000/uploads/${skuLower}.jpg`;
+  return `https://catalogue-imp360-server.onrender.com/uploads/${skuLower}.jpg`;
 }
 
 function removeAccents(str: string): string {

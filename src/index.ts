@@ -19,6 +19,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || "";
 
+app.use('/uploads', (req, res, next) => {
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "https://catalogue-imp360-client.vercel.app"
+  ];
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use(cors({
