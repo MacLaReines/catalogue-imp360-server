@@ -1,4 +1,4 @@
-import { importReseauxNasExcel } from "../services/exceltoMongo";
+import { importExcelSheet } from "../services/exceltoMongo";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
@@ -17,7 +17,7 @@ async function main() {
     console.log("✅ Connecté à MongoDB");
 
     // Exécution de l'importation
-    await importReseauxNasExcel();
+    await importExcelSheet("RESEAUX- NAS");
     
     console.log("✅ Importation terminée avec succès");
   } catch (error) {
