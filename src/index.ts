@@ -22,7 +22,10 @@ const MONGO_URI = process.env.MONGO_URI || "";
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "https://catalogue-imp360-client.vercel.app"
+  ],
   credentials: true,
 }));
 
